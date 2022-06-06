@@ -57,8 +57,9 @@ def generate_answer(url = "https://chatbot2-ni4mcaftla-ew.a.run.app/reply"):
             {eng_response}
             '''
 
-            st.session_state.history.append({"message": user_message, "is_user": True})
-            st.session_state.history.append({"message": output, "is_user": False})
+            session_num = len(st.session_state.history)
+            st.session_state.history.append({"message": user_message, "is_user": True, 'key': f'u_{session_num}'})
+            st.session_state.history.append({"message": output, "is_user": False, 'key': f'b_{session_num}'})
 
         else:
             params = {'text': user_message, "user_language": lang_select}
@@ -70,9 +71,9 @@ def generate_answer(url = "https://chatbot2-ni4mcaftla-ew.a.run.app/reply"):
             response = requests.get(url, params=params)
             answer = response.json()
 
-
-            st.session_state.history.append({"message": user_message, "is_user": True})
-            st.session_state.history.append({"message": answer['response'], "is_user": False})
+            session_num = len(st.session_state.history)
+            st.session_state.history.append({"message": user_message, "is_user": True, 'key': f'u_{session_num}'})
+            st.session_state.history.append({"message": answer['response'], "is_user": False, 'key': f'b_{session_num}'})
 
     else:
         params = {'text': user_message, "user_language": lang_select}
@@ -84,9 +85,9 @@ def generate_answer(url = "https://chatbot2-ni4mcaftla-ew.a.run.app/reply"):
         response = requests.get(url, params=params)
         answer = response.json()
 
-
-        st.session_state.history.append({"message": user_message, "is_user": True})
-        st.session_state.history.append({"message": answer['response'], "is_user": False})
+        session_num = len(st.session_state.history)
+        st.session_state.history.append({"message": user_message, "is_user": True, 'key': f'u_{session_num}'})
+        st.session_state.history.append({"message": answer['response'], "is_user": False, 'key': f'b_{session_num}'})
 
 st.text_input("Talk to the bot", key="input_text", on_change=generate_answer)
 
