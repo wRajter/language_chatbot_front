@@ -1,2 +1,6 @@
 streamlit
 streamlit_chat
+
+# bot_translation function:
+openai
+dotenv
