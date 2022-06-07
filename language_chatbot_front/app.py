@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit_chat import message as st_message
-
+from language_chatbot_front.openai_translation_api import bot_translation
+import re
 import requests
 
 #url = "https://chatbot-ni4mcaftla-ew.a.run.app/reply"
@@ -41,7 +42,22 @@ def generate_answer(url = "https://chatbot2-ni4mcaftla-ew.a.run.app/reply"):
 
     user_message = st.session_state.input_text
 
-    if eng_trans == True:
+    # bot translation
+    if user_message.lower().startswith('translate'):
+        # extracting language that we want to translate to
+        pattern_language = '(.*)into\s([A-Za-z]*)'
+        language_ = re.search(pattern_language, user_message).group(2)
+        # extracting text for the translation
+        pattern_text = "(T|t)ranslate\s(.*?)\sinto(.*)"
+        text_ = re.search(pattern_text, user_message).group(2)
+        # calling openai api through the bot_translation function
+        output = bot_translation(text_, language_)
+
+        session_num = len(st.session_state.history)
+        st.session_state.history.append({"message": user_message, "is_user": True, 'key': f'u_{session_num}'})
+        st.session_state.history.append({"message": output, "is_user": False, 'key': f'b_{session_num}'})
+
+    elif eng_trans == True:
         if lang_select != "en":
             eng_response = requests.get(url, {"text": user_message, "user_language": "en"})
             eng_answer = eng_response.json()
