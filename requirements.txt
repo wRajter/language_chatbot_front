@@ -4,3 +4,5 @@ streamlit_chat
 # bot_translation function:
 openai
 langdetect
+
+dotenv
