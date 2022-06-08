@@ -59,7 +59,7 @@ pypi:
 # ----------------------------------
 
 streamlit:
-	-@streamlit run app.py
+	-@streamlit run app2.py
 
 heroku_login:
 	-@heroku login
