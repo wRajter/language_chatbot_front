@@ -13,21 +13,21 @@ if "history" not in st.session_state:
     st.session_state.history = []
 
 with st.container():
-    st.title("Hi, I am your multilingual chatbot :wave:")
+    st.title("Hi, I am Kevin, your multilingual chatbot :wave:")
     st.subheader("I am here to help you learn a language of your choice :speech_balloon:")
     st.write("---")
 
-st.subheader(":warning: If you want to change the language please reload the page :warning:")
+st.subheader("You can choose the language that Kevin will speak to you in")
 
-lang_choice = st.selectbox("What language would you like to choose?", options=['No specific language', 'English', 'German', 'Spanish', 'French', 'Italian', 'Dutch', 'Polish', 'Portuguese', 'Slovak'])
+lang_choice = st.selectbox("Please choose", options=['No specific language', 'English', 'German', 'Spanish', 'French', 'Italian', 'Dutch', 'Polish', 'Portuguese', 'Slovak', 'Turkish', 'Finnish', 'Romanian', 'Hungarian'])
 
 
 st.write("---")
 
-eng_trans = st.checkbox("Would you like an optional English translation")
+eng_trans = st.checkbox("Would you like an optional English translation?")
 
 key_pairs = {'No specific language': 'no lang', 'English': 'en', 'German' : 'de', 'Spanish' : 'es', 'French' : 'fr', 'Italian' : 'it', 'Dutch' : 'nl', 'Polish' : 'pl', 'Portuguese' : 'pt', 'Slovak' : 'sk',
-            'Hungarian' : 'hu'}
+            'Hungarian' : 'hu', 'Turkish': 'tr', 'Finnish': 'fi', 'Romanian': 'ro', 'Hungarian': 'hu'}
 
 lang_select = key_pairs[lang_choice]
 
@@ -97,6 +97,10 @@ def generate_answer(url = "https://chatbot-new-ni4mcaftla-ew.a.run.app/reply"):
 
         else:
             st.session_state.history.append({"message": bot_answer_tr, "is_user": False, 'key': f'b_{session_num}'})
+
+st.write("---")
+
+st.subheader("Speak to Kevin in any language...")
 
 st.text_input("Talk to the bot", key="input_text", on_change=generate_answer)
 
