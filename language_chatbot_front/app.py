@@ -43,7 +43,7 @@ def generate_answer(url = "https://chatbot2-ni4mcaftla-ew.a.run.app/reply"):
     user_message = st.session_state.input_text
 
     # bot translation
-    if user_message.lower().startswith('translate'):
+    if user_message.lower().startswith('translate') and 'into' in user_message:
         # extracting language that we want to translate to
         pattern_language = '(.*)into\s([A-Za-z]*)'
         language_ = re.search(pattern_language, user_message).group(2)
