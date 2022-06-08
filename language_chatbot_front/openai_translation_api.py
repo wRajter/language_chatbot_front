@@ -2,14 +2,14 @@
 import os
 from urllib import response
 import openai
-from dotenv import load_dotenv, find_dotenv
+#from dotenv import load_dotenv, find_dotenv
 
-
+key = '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'
 
 # loading the key from the .env file
-env_path = find_dotenv() # automatic find
-load_dotenv(env_path)
-key = os.getenv('OPENAI_AUTH_KEY')
+#env_path = find_dotenv() # automatic find
+#load_dotenv(env_path)
+#key = os.getenv('OPENAI_AUTH_KEY')
 
 
 def bot_translation(text, target_language):
