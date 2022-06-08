@@ -19,15 +19,14 @@ with st.container():
 
 st.subheader("You can choose the language that Kevin will speak to you in")
 
-lang_choice = st.selectbox("Please choose", options=['No specific language', 'English', 'German', 'Spanish', 'French', 'Italian', 'Dutch', 'Polish', 'Portuguese', 'Slovak', 'Turkish', 'Finnish', 'Romanian', 'Hungarian'])
+lang_choice = st.selectbox("Please choose", options=['No specific language', 'English', 'German', 'Spanish', 'French', 'Italian', 'Dutch', 'Polish', 'Portuguese', 'Slovak'])
 
 
 st.write("---")
 
 eng_trans = st.checkbox("Would you like an optional English translation?")
 
-key_pairs = {'No specific language': 'no lang', 'English': 'en', 'German' : 'de', 'Spanish' : 'es', 'French' : 'fr', 'Italian' : 'it', 'Dutch' : 'nl', 'Polish' : 'pl', 'Portuguese' : 'pt', 'Slovak' : 'sk',
-            'Hungarian' : 'hu', 'Turkish': 'tr', 'Finnish': 'fi', 'Romanian': 'ro', 'Hungarian': 'hu'}
+key_pairs = {'No specific language': 'no lang', 'English': 'en', 'German' : 'de', 'Spanish' : 'es', 'French' : 'fr', 'Italian' : 'it', 'Dutch' : 'nl', 'Polish' : 'pl', 'Portuguese' : 'pt', 'Slovak' : 'sk',}
 
 lang_select = key_pairs[lang_choice]
 
