@@ -1,13 +1,14 @@
 
-from dotenv import load_dotenv, find_dotenv
+#from dotenv import load_dotenv, find_dotenv
 import os
 import requests
 
+key = 'a8b9104d-02e9-8e09-56a3-c3f8d5f0c6a8:fx'
 
 # loading the key from the .env file
-env_path = find_dotenv() # automatic find
-load_dotenv(env_path)
-key = os.getenv('DEEPL_AUTH_KEY')
+#env_path = find_dotenv() # automatic find
+#load_dotenv(env_path)
+#key = os.getenv('DEEPL_AUTH_KEY')
 
 # creating variables
 url = 'https://api-free.deepl.com/v2/translate'
