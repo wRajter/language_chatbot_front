@@ -46,16 +46,8 @@ def generate_answer(url = "https://chatbot-new-ni4mcaftla-ew.a.run.app/reply"):
         output = bot_translation(text_, language_)
 
         session_num = len(st.session_state.history)
-        st.session_state.history.append({"message": user_message,
-                                         "is_user": True,
-                                         'key': f'u_{session_num}',
-                                         'avatar_style': 'croodles-neutral',
-                                         'seed': 4})
-        st.session_state.history.append({"message": output,
-                                         "is_user": False,
-                                         'key': f'b_{session_num}',
-                                         'avatar_style': 'bottts',
-                                         'seed': 21})
+        st.session_state.history.append({"message": user_message, "is_user": True, 'key': f'u_{session_num}'})
+        st.session_state.history.append({"message": output, "is_user": False, 'key': f'b_{session_num}'})
 
     else:
         if  lang_select == 'no lang':
@@ -74,16 +66,8 @@ def generate_answer(url = "https://chatbot-new-ni4mcaftla-ew.a.run.app/reply"):
         session_num = len(st.session_state.history)
         conv = []
 
-        st.session_state.history.append({"message": user_message,
-                                         "is_user": True,
-                                         'key': f'u_{session_num}',
-                                         'avatar_style': 'croodles-neutral',
-                                         'seed': 4})
-        st.session_state.history.append({"message": answer['response'],
-                                         "is_user": False,
-                                         'key': f'b_{session_num}',
-                                         'avatar_style': 'bottts',
-                                         'seed': 21})
+        st.session_state.history.append({"message": user_message, "is_user": True, 'key': f'u_{session_num}'})
+        st.session_state.history.append({"message": answer['response'], "is_user": False, 'key': f'b_{session_num}'})
         conv.append(translate(user_message, "en"))
         conv.append(answer["response"])
 
@@ -108,18 +92,10 @@ def generate_answer(url = "https://chatbot-new-ni4mcaftla-ew.a.run.app/reply"):
                 ({answer['response']})
                 '''
 
-                st.session_state.history.append({"message": output,
-                                                 "is_user": False,
-                                                 'key': f'b_{session_num}',
-                                                 'avatar_style': 'bottts',
-                                                 'seed': 21})
+                st.session_state.history.append({"message": output, "is_user": False, 'key': f'b_{session_num}'})
 
         else:
-            st.session_state.history.append({"message": bot_answer_tr,
-                                             "is_user": False,
-                                             'key': f'b_{session_num}',
-                                             'avatar_style': 'bottts',
-                                             'seed': 21})
+            st.session_state.history.append({"message": bot_answer_tr, "is_user": False, 'key': f'b_{session_num}'})
 
 st.write("---")
 
